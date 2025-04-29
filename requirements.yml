@@ -1,0 +1,5 @@
+---
+collections:
+  - name: daowolf2000.linux
+    type: git
+    source: git@github.com:daowolf2000/ansible-collection-linux.git

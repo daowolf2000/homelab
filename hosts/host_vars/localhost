@@ -1,0 +1,9 @@
+common_user: dw
+
+package_host:
+    - direnv
+
+extra_roles: 
+    - docker
+    - terraform
+

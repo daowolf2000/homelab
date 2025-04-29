@@ -1,0 +1,17 @@
+plugin: community.general.proxmox
+
+# Должны быть определены следующие переменные окружения:
+# PROXMOX_URL=https://[redacted]:8006
+# PROXMOX_USER=root@pam
+# PROXMOX_PASSWORD=[redacted]
+
+validate_certs: false
+want_proxmox_nodes_ansible_host: false
+want_facts: true
+keyed_groups:
+  - key: proxmox_tags_parsed
+    separator: "_"
+    prefix: tag
+compose:
+  ansible_host: (proxmox_lxc_interfaces[1].inet | default(proxmox_net0.ip)).split('/')[0]
+  ansible_user: proxmox_ciuser | default('root')
