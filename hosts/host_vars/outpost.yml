@@ -1,9 +1,9 @@
+roles_host:
+  - docker
+  - noip
+
 package_host: []
 
 hosts_inventory: false
 
 sshd_port: "{{ hostvars['outpost']['ansible_port'] }}"
-
-extra_roles:
-  - docker
-  - noip

@@ -1,0 +1,5 @@
+ansible_become_password: "{{ lookup('env', 'PASSWORD_LOCALHOST') }}"
+
+roles_host:
+    - docker
+    - terraform

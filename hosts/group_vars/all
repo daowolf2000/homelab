@@ -1,11 +1,17 @@
 ansible_ssh_private_key_file: "{{ lookup('env', 'HOME') + '/.ssh/id_ed25519' }}"
 
+roles_group:
+  - daowolf2000.linux.package
+  - daowolf2000.linux.hosts
+  - daowolf2000.linux.sshd
+  - daowolf2000.linux.users
+
 users_group:
   daowolf:
-    password      : "{{ lookup('env', 'PASSWORD_ADMIN') }}"
+    password      : "{{ lookup('env', 'PASSWORD_DEFAULT') | password_hash('sha512','daowolf2000') }}"
     sudo          : true
     sudo_nopass   : true
-    ssh_auth_keys : "{{ lookup('env', 'HOME') + '/.ssh/id_ed25519.pub' }}"
+    ssh_auth_keys : "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/id_ed25519.pub') }}"
     dotfiles_repo : "https://github.com/daowolf2000/dotfiles.git"
 
 common_user: daowolf

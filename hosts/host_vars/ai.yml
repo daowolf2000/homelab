@@ -1,4 +1,6 @@
-extra_roles:
+roles_host:
   - daowolf2000.linux.docker
+  - daowolf2000.linux.openwebui
+  - daowolf2000.linux.ollama
   - daowolf2000.linux.jupyter
 
