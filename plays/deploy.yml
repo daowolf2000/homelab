@@ -1,0 +1,17 @@
+# Настройка хоста. Роли, которые должны быть применены на конкретном хосте
+# описываются в списках {{ roles_group }} и {{ roles_host }}
+# Требует указания {{ target }} - цели применения плейбука
+
+- name: Deploy to {{ target }} # noqa syntax-check[specific]
+  hosts: "{{ target }}"
+  gather_facts: true
+  become: true
+
+  tasks:
+
+    - ansible.builtin.include_role: 
+        name: "{{ role_item }}"
+      loop: "{{ roles_group + roles_host | d([]) }}"
+      loop_control:
+        loop_var: role_item
+
