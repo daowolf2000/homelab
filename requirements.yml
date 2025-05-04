@@ -1,5 +1,19 @@
 ---
 collections:
-  - name: daowolf2000.linux
+  # - name: https://github.com/daowolf2000/ansible-collection-linux.git
+  #   version: dev
+  #   type: git
+
+  # - name: https://github.com/daowolf2000/ansible-collection-proxmox.git
+  #   version: main
+  #   type: git
+
+  - name: file:///home/dw/dev/ansible-collection-linux
+    version: dev
     type: git
-    source: git@github.com:daowolf2000/ansible-collection-linux.git
+
+  - name: file:///home/dw/dev/ansible-collection-proxmox
+    version: main
+    type: git
+
+  - name: community.general
