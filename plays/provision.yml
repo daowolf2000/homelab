@@ -1,0 +1,32 @@
+---
+# Развертывание инфраструктуры описанной с помощью Terraform
+# Требует: 
+#   {{ target }} - имя папки в terraform с описание струтуры
+# Необязательно:
+#   {{ action }} - present / absent (default = present)
+
+- name: Provision servers
+  hosts: localhost
+  gather_facts: true
+
+  tasks:
+
+    - name: Run Terraform
+      community.general.terraform:
+        project_path: '{{ playbook_dir }}/../terraform/{{ target }}'
+        force_init: true
+        state: "{{ action | d('present') }}"
+
+    - name: Update /etc/hosts on localhost
+      become: true
+      ansible.builtin.import_role:
+        name: daowolf2000.linux.hosts
+
+- name: Nvidia passthru for LXC with tag gpu
+  ansible.builtin.import_playbook:
+    daowolf2000.proxmox.lxc_nvidia_passthru
+  vars:
+    target: tag_gpu
+      
+
+
