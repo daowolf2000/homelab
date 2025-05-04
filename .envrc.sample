@@ -1,0 +1,27 @@
+# Установка и обновление зависимостей
+ansible-galaxy collection install -r requirements.yml # --force
+
+# Пароль become для localhost
+export PASSWORD_LOCALHOST=PASSWORD
+export PASSWORD_DEFAULT=PASSWORD
+
+# Настройки для сервиса NoIP
+export NOIP_USERNAME=USERNAME
+export NOIP_PASSWORD=PASSWORD
+
+# Настройка подключения к Proxmox (для Ansible)
+export PROXMOX_NODE=pve
+export PROXMOX_URL=https://PROXMOX_IP:8006
+export PROXMOX_API_HOST=PROXMOX_IP
+export PROXMOX_PASSWORD=PASSWORD
+export PROXMOX_USERNAME=roo@pam
+
+# Настройка подключения к Proxmox (для Terraform)
+export PM_USER=${PROXMOX_USER}
+export PM_PASS=${PROXMOX_PASSWORD}
+export PM_API_URL=${PROXMOX_URL}/api2/json
+
+# Значения по умолчанию для создаваемыех виртуальных машин
+export TF_VAR_default_password=${PASSWORD_DEFAULT}
+export TF_VAR_default_ssh_public_keys=${HOME}/.ssh/id_ed25519.pub
+
