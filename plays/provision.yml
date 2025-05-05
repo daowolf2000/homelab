@@ -26,7 +26,7 @@
   ansible.builtin.import_playbook:
     daowolf2000.proxmox.lxc_nvidia_passthru
   vars:
-    target: tag_gpu
+    x_target: tag_gpu
       
 
 
