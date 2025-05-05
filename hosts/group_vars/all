@@ -9,6 +9,8 @@ roles_group:
 users_group:
   daowolf:
     password      : "{{ lookup('env', 'PASSWORD_DEFAULT') | password_hash('sha512','daowolf2000') }}"
+    uid           : 2000
+    gid           : 2000          
     sudo          : true
     sudo_nopass   : true
     ssh_auth_keys : "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/id_ed25519.pub') }}"
