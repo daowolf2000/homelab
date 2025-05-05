@@ -25,7 +25,7 @@ variable "tags" {
 
 variable "cores" {
   type    = number
-  default = 2
+  default = null
 }
 
 variable "memory" {
