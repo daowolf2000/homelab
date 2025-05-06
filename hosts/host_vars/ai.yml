@@ -7,3 +7,9 @@ roles_host:
 docker_nvidia_ctk_no_cgroups: true
 
 openwebui_path : /opt/apps/openwebui
+
+ollama_homedir : /opt/apps/ollama
+ollama_user_uid: 3000
+ollama_user_gid: 3000
+ollama_env:
+  - OLLAMA_HOST=0.0.0.0:11434

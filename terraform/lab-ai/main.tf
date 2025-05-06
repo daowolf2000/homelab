@@ -4,18 +4,13 @@ locals {
   ssh_public_keys        = file(var.default_ssh_public_keys)
   network_gw             = "192.168.1.1"
   nameserver             = "192.168.1.1"
-  pool                   = "lab-ai"
 }
 
-resource "proxmox_pool" "base" {
-  poolid = local.pool
-}
 
 module "ai" {
   source = "../modules/lxc_container"
 
   hostname   = "ai"
-  pool       = local.pool
   ostemplate = local.lxc_template_os_debian
   tags = [ "gpu" ]
   
