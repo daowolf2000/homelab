@@ -17,6 +17,9 @@
         force_init: true
         state: "{{ action | d('present') }}"
 
+    - name: Update inventory
+      ansible.builtin.meta: refresh_inventory
+
     - name: Update /etc/hosts on localhost
       become: true
       ansible.builtin.import_role:
