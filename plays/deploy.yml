@@ -14,4 +14,5 @@
       loop: "{{ roles_group + roles_host | d([]) }}"
       loop_control:
         loop_var: role_item
+      tags: [ install, update, config, users ]
 
