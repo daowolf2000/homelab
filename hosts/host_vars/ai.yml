@@ -7,6 +7,19 @@ roles_host:
 docker_nvidia_ctk_no_cgroups: true
 
 openwebui_path : /opt/apps/openwebui
+openwebui_env : |
+  WEBUI_AUTH=False
+  ENABLE_PERSISTENT_CONFIG=False
+  ENABLE_WEB_SEARCH=True
+  WEB_SEARCH_RESULT_COUNT=5
+  # WEB_SEARCH_ENGINE=perplexity
+  ENABLE_OLLAMA_API=True
+  OLLAMA_BASE_URLS=http://192.168.1.11434
+  ENABLE_EVALUATION_ARENA_MODELS=False
+  ENABLE_MESSAGE_RATING=False
+  ENABLE_COMMUNITY_SHARING=False
+
+
 
 ollama_homedir : /opt/apps/ollama
 ollama_user_uid: 3000
