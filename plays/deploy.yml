@@ -8,13 +8,32 @@
   become: true
   vars:
     roles: "{{ roles_group + roles_host | d([]) }}"
+    pre_tasks: []
+    post_tasks: []
+
+  pre_tasks:
+
+    - name: Run pre-tasks
+      ansible.builtin.include_tasks: "{{ task_item }}"
+      loop: "{{ pre_tasks }}"
+      loop_control:
+        loop_var: task_item
 
   tasks:
 
-    - ansible.builtin.include_role: 
+    - name: Run roles
+      ansible.builtin.include_role: 
         name: "{{ role_item }}"
       loop: "{{ roles }}"
       loop_control:
         loop_var: role_item
       tags: [ install, update, config, users ]
+
+  post_tasks:
+
+    - name: Run post-tasks
+      ansible.builtin.include_tasks: "{{ task_item }}"
+      loop: "{{ post_tasks }}"
+      loop_control:
+        loop_var: task_item
 
