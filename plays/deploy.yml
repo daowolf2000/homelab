@@ -6,12 +6,14 @@
   hosts: "{{ target }}"
   gather_facts: true
   become: true
+  vars:
+    roles: "{{ roles_group + roles_host | d([]) }}"
 
   tasks:
 
     - ansible.builtin.include_role: 
         name: "{{ role_item }}"
-      loop: "{{ roles_group + roles_host | d([]) }}"
+      loop: "{{ roles }}"
       loop_control:
         loop_var: role_item
       tags: [ install, update, config, users ]
