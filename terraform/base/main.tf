@@ -37,3 +37,28 @@ module "master" {
     }
   ]
 }
+
+module "mon" {
+  source = "../modules/lxc_container"
+
+  hostname   = "mon"
+  pool       = local.pool
+  ostemplate = local.lxc_template_os_debian
+
+  memory = 4096
+
+  password        = local.password
+  ssh_public_keys = local.ssh_public_keys
+
+  network_ip = "192.168.1.12/24"
+  network_gw = local.network_gw
+  nameserver = local.nameserver
+
+  bind_mounts = [
+    {
+      volume = "/mnt/lab/apps"
+      mp     = "/opt/apps"
+      shared = true
+    }
+  ]
+}

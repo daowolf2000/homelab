@@ -1,8 +1,13 @@
+package_host:
+  - ffmpeg
+  - python3-virtualenv
+
 roles_host:
   - daowolf2000.linux.docker
   - daowolf2000.linux.openwebui
   - daowolf2000.linux.ollama
-  # - daowolf2000.linux.jupyter
+  - daowolf2000.linux.comfyui
+  - daowolf2000.linux.jupyter
 
 docker_nvidia_ctk_no_cgroups: true
 
@@ -14,15 +19,9 @@ openwebui_env : |
   WEB_SEARCH_RESULT_COUNT=5
   # WEB_SEARCH_ENGINE=perplexity
   ENABLE_OLLAMA_API=True
-  OLLAMA_BASE_URLS=http://192.168.1.11434
+  OLLAMA_BASE_URLS=http://192.168.1.11:11434
   ENABLE_EVALUATION_ARENA_MODELS=False
   ENABLE_MESSAGE_RATING=False
   ENABLE_COMMUNITY_SHARING=False
 
-
-
-ollama_homedir : /opt/apps/ollama
-ollama_user_uid: 3000
-ollama_user_gid: 3000
-ollama_env:
-  - OLLAMA_HOST=0.0.0.0:11434
+jupyter_home: /opt/apps/jupyter

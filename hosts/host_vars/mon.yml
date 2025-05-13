@@ -1,0 +1,5 @@
+roles_host:
+  - daowolf2000.linux.zbx
+  - daowolf2000.linux.grafana
+
+zbx_db_front_net: true

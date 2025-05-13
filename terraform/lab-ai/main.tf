@@ -15,8 +15,9 @@ module "ai" {
   tags = [ "gpu" ]
   
   memory = 8192
+  swap = 0
 
-  rootfs_size = "50G"
+  rootfs_size = "70G"
 
   password        = local.password
   ssh_public_keys = local.ssh_public_keys
