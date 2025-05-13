@@ -16,20 +16,28 @@
         project_path: '{{ playbook_dir }}/../terraform/{{ target }}'
         force_init: true
         state: "{{ action | d('present') }}"
+      register: tf_state
+
+    - name: Print Terraform output
+      ansible.builtin.debug:
+        var: tf_state.stdout_lines
+
 
     - name: Update inventory
       ansible.builtin.meta: refresh_inventory
 
     - name: Update /etc/hosts on localhost
+      when: tf_state is changed
       become: true
       ansible.builtin.import_role:
         name: daowolf2000.linux.hosts
+      diff: true
 
-- name: Nvidia passthru for LXC with tag gpu
-  ansible.builtin.import_playbook:
-    daowolf2000.proxmox.lxc_nvidia_passthru
-  vars:
-    x_target: tag_gpu
+# - name: Nvidia passthru for LXC with tag gpu
+#   ansible.builtin.import_playbook:
+#     daowolf2000.proxmox.lxc_nvidia_passthru
+#   vars:
+#     x_target: tag_gpu
       
 
 
