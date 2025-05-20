@@ -1,0 +1,12 @@
+roles_host:
+  - daowolf2000.linux.gitlab
+
+gitlab_mem_limit: 6g
+gitlab_mem_rezerv: 4g
+
+gitlab_omnibus_config: 
+  - gitlab_rails['initial_root_password'] = '{{ lookup('env', 'PASSWORD_ADMIN') }}'
+  - puma['worker_processes'] = 0
+  - sidekiq['concurrency'] = 10
+  - prometheus_monitoring['enable'] = false
+  - gitlab_rails['env'] = {'MALLOC_CONF' => 'dirty_decay_ms:1000,muzzy_decay_ms:1000'}

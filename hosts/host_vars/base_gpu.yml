@@ -1,0 +1,4 @@
+roles_host:
+  - daowolf2000.linux.docker
+
+docker_nvidia_ctk_no_cgroups: true

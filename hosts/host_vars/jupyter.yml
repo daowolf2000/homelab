@@ -1,0 +1,7 @@
+package_host:
+  - ffmpeg
+
+roles_host:
+  - daowolf2000.linux.jupyter
+
+jupyter_password: "{{ lookup('env', 'PASSWORD_DEFAULT') }}"

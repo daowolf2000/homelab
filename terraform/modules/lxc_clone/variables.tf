@@ -1,9 +1,5 @@
 # https://github.com/Telmate/terraform-provider-proxmox/blob/master/docs/resources/lxc.md
 
-variable "ostemplate" {
-  type = string
-}
-
 variable "target_node" {
   type = string
   default = "pve"
@@ -51,16 +47,6 @@ variable "onboot" {
 variable "start" {
   type    = bool
   default = true
-}
-
-variable "password" {
-  type      = string
-  sensitive = true
-}
-
-variable "ssh_public_keys" {
-  type    = string
-  default = null
 }
 
 variable "nameserver" {
@@ -138,7 +124,6 @@ variable "bind_mounts" {
 }
 
 variable "template_id" {
-  type = number
+  type = string
   description = "VMID шаблона для клонирования"
-  default = null
 }

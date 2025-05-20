@@ -7,14 +7,12 @@ terraform {
   }
 }
 
-resource "proxmox_lxc" "lxc_ct" {
-  ostemplate = var.ostemplate
-
+resource "proxmox_lxc" "lxc_clone" {
   target_node = var.target_node
   hostname    = var.hostname
   pool = var.pool
 
-  clone = var.template_id != null ? var.template_id : null
+  clone = var.template_id
 
   tags = join(",", concat(var.tags, ["terraform"]))
 
@@ -26,9 +24,6 @@ resource "proxmox_lxc" "lxc_ct" {
 
   onboot = var.onboot
   start  = var.start
-
-  password        = var.password
-  ssh_public_keys = var.ssh_public_keys
 
   nameserver = var.nameserver
   network {
@@ -67,6 +62,6 @@ resource "proxmox_lxc" "lxc_ct" {
   }
 
   lifecycle {
-    ignore_changes = [ostemplate, target_node, hastate]
+    ignore_changes = [target_node, hastate]
   }
 }

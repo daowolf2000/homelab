@@ -1,0 +1,7 @@
+roles_host:
+  - daowolf2000.linux.immich
+
+docker_nvidia_ctk_no_cgroups: true
+
+immich_hwaccel_transcoding: nvenc
+immich_hwaccel_ml: cuda
