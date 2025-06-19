@@ -14,5 +14,6 @@ users_group:
     sudo          : true
     sudo_nopass   : true
     ssh_auth_keys : "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/id_ed25519.pub') }}"
+    dotfiles_repo : "https://github.com/daowolf2000/dotfiles.git"
 
 common_user: daowolf

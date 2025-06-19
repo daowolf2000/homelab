@@ -1,6 +1,10 @@
 roles_host:
   - daowolf2000.linux.gitlab
 
+gitlab_hostname: "192.168.1.25"
+gitlab_port_http  : 80
+gitlab_port_https : 443
+
 gitlab_mem_limit: 6g
 gitlab_mem_rezerv: 4g
 
@@ -10,3 +14,4 @@ gitlab_omnibus_config:
   - sidekiq['concurrency'] = 10
   - prometheus_monitoring['enable'] = false
   - gitlab_rails['env'] = {'MALLOC_CONF' => 'dirty_decay_ms:1000,muzzy_decay_ms:1000'}
+  - gitlab_rails['gitlab_shell_ssh_port'] = 2022

@@ -24,3 +24,10 @@ openwebui_env : |
   ENABLE_COMMUNITY_SHARING=False
 
 jupyter_home: /opt/apps/jupyter
+
+ollama_env:
+    - OLLAMA_HOST=0.0.0.0:11434
+    - OLLAMA_MODELS={{ ollama_models }}
+    - OLLAMA_CONTEXT_LENGTH=40960
+    - OLLAMA_NOHISTORY=1
+    - OLLAMA_FLASH_ATTENTION=1
