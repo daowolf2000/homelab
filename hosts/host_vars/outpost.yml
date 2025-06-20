@@ -1,6 +1,7 @@
 roles_host:
-  - docker
-  - noip
+  - daowolf2000.linux.docker
+  - daowolf2000.linux.noip
+  - daowolf2000.linux.wireguard
 
 package_host: []
 
